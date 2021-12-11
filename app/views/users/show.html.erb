@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+    </div>
+    
+    <div class="col-9">
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>title</th>
+            <th>review</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% @books.each do |book| %>
+              <td><%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, class: "rounded-circle" %><</td>
+              <td><%= book.title %></td>
+              <td>comments: <%= post.post_comments.count %></td>
+              <td></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>  
+</div>

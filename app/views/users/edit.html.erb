@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <%= form_with model:@user, local:true do |f| %>
+        <div class="form-group">
+          <label for="user_name">Name</label>
+          <%= f.text_field :name, autofocus: true, id:"user_name", class: "form-control name" %>
+        </div>
+        <div class="form-group">
+          <label for="inputImage">Image</label>
+          <%= f.attachment_firld :profile_image, class: "form-control-file user_image" %>
+        </div>
+        <div class="form-group">
+          <label for="user_introduction">Introduction</label>
+          <%= f.text_area :introduction, autofocus: true, class: "form-control introduction" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "更新", class: "btn btn-sucsses" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
