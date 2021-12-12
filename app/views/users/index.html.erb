@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
+    <div class="col-md-3">
+      <%= render 'user/info', user: current_user %>
     </div>
-    
-    <div class="col-9">
-      <table class="table">
+      
+    <div class="col-md-9">
+      <table class="table table-hover table-inverse">
         <thead>
           <tr>
             <th></th>
@@ -18,8 +19,8 @@
             <% @users.each do |user| %>
               <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, class: "rounded-circle" %></td>
               <td><%= link_to user.name, user_path(user.id) %></td>
-              <td>フォロー <%= link_to user.followings.count, usrt_followings_path(user) %></td>
-              <td>フォロワー <%= user.followers.count %></td>
+              <td>follows:  link_to user.followings.count, usrt_followings_path(user) </td>
+              <td>followers:  user.followers.count </td>
             <% end %>
           </tr>
         </tbody>

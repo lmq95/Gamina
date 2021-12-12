@@ -30,6 +30,8 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
   
+  enum gender: { woman: 0, man: 1 }
+  
   attachment :profile_image
   
 end
