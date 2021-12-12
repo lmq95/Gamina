@@ -1,6 +1,6 @@
 <h2>新規登録</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_with model: @user, url: user_registration_path, local: true do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
@@ -11,6 +11,14 @@
   <div class="field">
     <%= f.label :メールアドレス %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+  
+  <div class="gender-field">
+    <%= f.label :性別 %><br />
+    <%= f.radio_button :gender, :女性, checked: "checked" %>
+    <%= f.label :gender, "女性", { value: :女性, style: "display: inline-block;"} %>
+    <%= f.radio_button :gender, :男性 %>
+    <%= f.label :gender, "男性", { value: :男性, style: "display: inline-block;"} %>
   </div>
 
   <div class="field">
