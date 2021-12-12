@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'user/info', user: @user %>
+    </div>
+    
+    <div class="col-9">
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th></th>
+            <th>title</th>
+            <th>review</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% @posts.each do |post| %>
+              <td><%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, class: "rounded-circle" %><</td>
+              <td><%= post.title %></td>
+              <td></td>
+              <td>comments: <%= post.post_comments.count %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>  
+</div>
