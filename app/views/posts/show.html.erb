@@ -4,7 +4,7 @@
       <%= render 'users/info', user: current_user %>
     </div>
     <div class="col-md-8 offset-md-1">
-      <div class="table table-hover table-inverse" >
+      <table class="table table-hover table-inverse" >
         <tbody>
           <tr>
             <td><%= attachment_image_tag @post.user, :profile_image, :fill, 40, 40, fallback: "no-image.png", class: "rounded-circle" %></td>
@@ -17,7 +17,7 @@
             <% end %>
           </tr>
         </tbody>
-      </div>
+      </table>
     </div>
   </div>
 </div>
