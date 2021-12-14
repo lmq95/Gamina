@@ -12,12 +12,13 @@
             <td><%= @post.body %></td>
             <td></td>
             <% if @post.user_id == current_user.id %>
-              <td><%= link_to "", edit_post_path(@post), class: "fas fa-pencil-alt" %></td>
+              <td><%= link_to "", edit_post_path(@post), class: "fas fa-p encil-alt" %></td>
               <td><%= link_to "", post_path(@post), method: :delete, data: {confirm: "本当に消しますか？"}, class: "fas fa-trash-alt" %></td>
             <% end %>
           </tr>
         </tbody>
       </table>
+      <%= render 'post_comments/comment', post: @post, post_comment: @post_comment %>
     </div>
   </div>
 </div>
