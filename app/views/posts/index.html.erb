@@ -1,15 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 mx-auto">
       <%= render 'users/info', user: current_user %>
     </div>
-    <div class="col-md-8 offset-md-1">
-      <table class="table table-hover table-inverse" >
+      
+    <div class="col-md-8 offset-md-1 pt-3">
+      <table class="table table-hover table-inverse">
         <thead>
           <tr>
-            <th>image</th>
+            <th></th>
+            <th>name</th>
             <th>title</th>
-            <th>review</th>
             <th></th>
             <th></th>
           </tr>
@@ -17,17 +18,18 @@
         <tbody>
           <% @posts.each do |post| %>
           <tr>
-          <td><%= link_to user_path(post.user.id) do %>
-                <%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, fallback: "no-image.png", class: "rounded-circle" %></td>
+            <td>
+              <%= link_to user_path(post.user.id) do %>
+                <%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, fallback: "no-image.png", class: "rounded-circle" %>
               <% end %>
-          <td><%= link_to post.title, post_path(post.id) %></td>
-          <td></td>
-          <td></td>
-          <td></td>
+            </td>
+            <td><%= link_to post.title, post_path(post.id) %></td>
+            <td></td>
+            <td><i class="far fa-comment-alt"><%= post.post_comments.count %></i></td>
           </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-  </div>
+  </div>  
 </div>
