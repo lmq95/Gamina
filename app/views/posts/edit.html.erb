@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <%= form_with model:@post, local:true do |f| %>
+        <div class="form-group">
+          <%= f.label :タイトル %>
+          <%= f.text_field :title, autofocus: true, class: "form-control title" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :ジャンル %>
+          <%= f.text_field :genre, autofocus: true, class: "form-control genre" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :本文 %>
+          <%= f.text_area :body, autofocus: true, class: "form-control body" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "更新", class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
