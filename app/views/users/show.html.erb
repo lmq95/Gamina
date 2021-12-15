@@ -18,7 +18,7 @@
         <tbody>
           <tr>
             <% @posts.each do |post| %>
-              <td><%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, class: "rounded-circle" %></td>
+              <td><%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle" %></td>
               <td><%= link_to post.title, post_path(post.id) %></td>
               <td></td>
               <td>comments: <%= post.post_comments.count %></td>
