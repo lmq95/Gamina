@@ -16,14 +16,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <% @users.each do |user| %>
+          <% @users.each do |user| %>  
+            <tr>
               <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle" %></td>
               <td><%= link_to user.name, user_path(user.id) %></td>
               <td>follows:  <%= link_to user.followings.count, user_followings_path(user) %> </td>
               <td>followers:  <%= link_to user.followers.count, user_followers_path(user) %> </td>
-            <% end %>
-          </tr>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
