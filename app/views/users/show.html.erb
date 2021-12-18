@@ -5,6 +5,22 @@
     </div>
     
     <div class="col-md-8 offset-md-1 pt-3">
+      
+      <% unless @user.id == current_user.id %>
+        <% if current_user.following?(@user) && @user.following?(current_user) %>
+        <% if @is_room == true %>
+          <%= link_to "message", room_path(@room_id), class: 'btn-sm btn-primary' %>
+        <% else %>
+          <%= form_with model: @room, url: rooms_path, local: true do |f| %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, value: @user.id %>
+            <% end %>
+            <%= f.submit "start message", class: 'btn-sm btn-success' %>
+          <% end %>
+        <% end %>
+        <% end %>
+      <% end %>
+      
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
@@ -16,14 +32,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <% @posts.each do |post| %>
+          <% @posts.each do |post| %>
+            <tr>
               <td><%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle" %></td>
               <td><%= link_to post.title, post_path(post.id) %></td>
               <td></td>
               <td>comments: <%= post.post_comments.count %></td>
-            <% end %>
-          </tr>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
