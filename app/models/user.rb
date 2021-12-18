@@ -45,7 +45,7 @@ class User < ApplicationRecord
   end
 
   def unfollow(user_id)
-    relationships.find_by(followed_id: user_id)
+    relationships.find_by(followed_id: user_id).destroy
   end
 
   def following?(user)
@@ -53,10 +53,13 @@ class User < ApplicationRecord
   end
 
   #フォロー通知作成メソッド
-  def create_notification_follow(current_user)
+  def create_notification_follow!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
     if temp.blank?
-      notification = current_user.active_notifications.new(visited_id: id, action: 'follow')
+      notification = current_user.active_notifications.new(
+        visited_id: id, 
+        action: 'follow'
+        )
       notification.save if notification.valid?
     end
   end
