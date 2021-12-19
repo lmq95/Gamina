@@ -36,7 +36,20 @@
             <tr>
               <td><%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle" %></td>
               <td><%= link_to post.title, post_path(post.id) %></td>
-              <td></td>
+              <td>
+              <div id="star-rate-<%= post.id %>"></div>
+              <script>
+                $('#star-rate-<%= post.id %>').raty({
+                  size: 36,
+                  starOff: "<%= asset_path('off-star.gif') %>",
+                  starOn: "<%= asset_path('on-star.gif') %>",
+                  starHalf: "<%= asset_path('half-star.gif') %>",
+                  half: true,
+                  readOnly: true,
+                  score: <%= post.rate %>,
+                });
+              </script>
+            </td>
               <td>comments: <%= post.post_comments.count %></td>
             </tr>
           <% end %>

@@ -10,6 +10,22 @@
           <%= f.label :ジャンル %>
           <%= f.text_field :genre, autofocus: true, class: "form-control genre" %>
         </div>
+        
+        <div class="form-group" id="star">
+          <%= f.label :rate, "評価：" %>
+          <%= f.hidden_field :rate, id: :review_star %>
+        </div>
+          <script>
+            $('#star').raty({
+              size     : 36,
+              starOff:  '<%= asset_path('off-star.gif') %>',
+              starOn : '<%= asset_path('on-star.gif') %>',
+              starHalf: '<%= asset_path('half-star.gif') %>',
+              scoreName: 'post[rate]',
+              half: true,
+            });
+          </script>
+        
         <div class="form-group">
           <%= f.label :本文 %>
           <%= f.text_area :body, autofocus: true, class: "form-control body" %>
