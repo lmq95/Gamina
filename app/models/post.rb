@@ -13,9 +13,9 @@ class Post < ApplicationRecord
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'favorite'])
     if temp.blank?
       notification = current_user.active_notifications.new(
-        post_id: id, 
-        visited_id: user_id, 
-        action: 'favorote'
+        post_id: id,
+        visited_id: user_id,
+        action: 'favorite'
         )
       #自分自身に対するいいねは通知済みにして、通知を来ないようにする
       if notification.visitor_id == notification.visited_id
@@ -37,9 +37,9 @@ class Post < ApplicationRecord
 
   def save_notification_comment!(current_user, post_comment_id, visited_id)
     notification = current_user.active_notifications.new(
-      post_id: id, 
-      post_comment_id: post_comment_id, 
-      visited_id: visited_id, 
+      post_id: id,
+      post_comment_id: post_comment_id,
+      visited_id: visited_id,
       action: 'post_comment'
       )
     if notification.visitor_id == notification.visited_id
