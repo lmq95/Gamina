@@ -20,20 +20,23 @@
                   starHalf: "<%= asset_path('half-star.gif') %>",
                   half: true,
                   readOnly: true,
-                  score: <%= @post.rate %>,
+                  score: <%= @post.rate %>
                 });
               </script>
             </td>
             
-            <td><%= render 'favorites/favorite', post: @post %></td>
+            <td id="favorite_<%= @post.id %>"><%= render 'favorites/favorite', post: @post %></td>
+            
             <% if @post.user_id == current_user.id %>
               <td><%= link_to "", edit_post_path(@post), class: "fas fa-pencil-alt" %></td>
               <td><%= link_to "", post_path(@post), method: :delete, data: {confirm: "本当に消しますか？"}, class: "fas fa-trash-alt" %></td>
             <% end %>
           </tr>
         </tbody>
-      </table> 
-      <%= render 'post_comments/comment', post: @post, post_comment: @post_comment %>
+      </table>
+      <div id="comment">
+        <%= render 'post_comments/comment', post: @post, post_comment: @post_comment %>
+      </div>
     </div>
   </div>
 </div>
