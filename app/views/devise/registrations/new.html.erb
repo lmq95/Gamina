@@ -1,42 +1,48 @@
-<h2>新規登録</h2>
-
-<%= form_with model: @user, url: user_registration_path, local: true do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :名前 %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+<div class="container py-5 px-sm-0">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>新規登録</h2>
+      
+      <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+      
+        <div class="field">
+          <%= f.label :名前 %><br />
+          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+        </div>
+      
+        <div class="field">
+          <%= f.label :メールアドレス %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+        
+        <div class="gender-field">
+          <%= f.label :性別 %><br />
+          <%= f.radio_button :gender, :女性, checked: "checked" %>
+          <%= f.label :gender, "女性", { value: :女性, style: "display: inline-block;"} %>
+          <%= f.radio_button :gender, :男性 %>
+          <%= f.label :gender, "男性", { value: :男性, style: "display: inline-block;"} %>
+        </div>
+      
+        <div class="field">
+          <%= f.label :パスワード %>
+          <% if @minimum_password_length %>
+          <em>（<%= @minimum_password_length %> 文字以上）</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+      
+        <div class="field">
+          <%= f.label :パスワード（確認用） %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+      
+        <div class="actions">
+          <%= f.submit "Sign up" %>
+        </div>
+      <% end %>
+      
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  
-  <div class="gender-field">
-    <%= f.label :性別 %><br />
-    <%= f.radio_button :gender, :女性, checked: "checked" %>
-    <%= f.label :gender, "女性", { value: :女性, style: "display: inline-block;"} %>
-    <%= f.radio_button :gender, :男性 %>
-    <%= f.label :gender, "男性", { value: :男性, style: "display: inline-block;"} %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード %>
-    <% if @minimum_password_length %>
-    <em>（<%= @minimum_password_length %> 文字以上）</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード（確認用） %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

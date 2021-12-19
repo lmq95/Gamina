@@ -6,6 +6,12 @@
         <%= link_to edit_user_path(user) do %>
           <i class="btn btn-outline-secondary fas fa-user-cog ml-2 mt-4"></i>
         <% end %>
+      <% else %>
+        <% if current_user.following?(user) %>
+          <%= link_to "", user_relationships_path(user.id), method: :delete, class: "fas fa-user-minus btn btn-primary btn-sm ml-2 mt-4" %>
+        <% else %>
+          <%= link_to "", user_relationships_path(user.id), method: :post, class: "fas fa-user-plus btn btn-success btn-sm ml-2 mt-4" %>
+        <% end %>
       <% end %>
     </tr>
     <tr>
@@ -31,14 +37,4 @@
     <i class="fas fa-plus-circle fa-2x"></i>
   <% end %>
 </p>
-<p>
-  <% if user.id == current_user.id %>
-      <%= link_to "", edit_user_path(user), class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
-  <% else %>
-    <% if current_user.following?(user) %>
-      <%= link_to "remove", user_relationships_path(user.id), method: :delete, class: "btn btn-primary" %>
-    <% else %>
-      <%= link_to "follow", user_relationships_path(user.id), method: :post, class: "btn btn-success" %>
-    <% end %>
-  <% end %>
-</p>
+
