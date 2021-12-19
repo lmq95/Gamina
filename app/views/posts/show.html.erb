@@ -10,6 +10,21 @@
             <td><%= attachment_image_tag @post.user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle" %></td>
             <td><%= @post.title %></td>
             <td><%= @post.body %></td>
+            <td>
+              <div id="star-rate-<%= @post.id %>"></div>
+              <script>
+                $('#star-rate-<%= @post.id %>').raty({
+                  size: 36,
+                  starOff: "<%= asset_path('off-star.gif') %>",
+                  starOn: "<%= asset_path('on-star.gif') %>",
+                  starHalf: "<%= asset_path('half-star.gif') %>",
+                  half: true,
+                  readOnly: true,
+                  score: <%= @post.rate %>,
+                });
+              </script>
+            </td>
+            
             <td><%= render 'favorites/favorite', post: @post %></td>
             <% if @post.user_id == current_user.id %>
               <td><%= link_to "", edit_post_path(@post), class: "fas fa-pencil-alt" %></td>
@@ -17,7 +32,7 @@
             <% end %>
           </tr>
         </tbody>
-      </table>
+      </table> 
       <%= render 'post_comments/comment', post: @post, post_comment: @post_comment %>
     </div>
   </div>

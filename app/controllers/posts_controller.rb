@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    if @post.save(post_params)
+    if @post.save!(post_params)
        redirect_to post_path(@post)
     else
        render 'new'
@@ -48,7 +48,7 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:title, :body, :genre)
+    params.require(:post).permit(:title, :body, :genre, :rate)
   end
   
 end
