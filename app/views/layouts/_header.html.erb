@@ -1,7 +1,7 @@
 <header>
-  <nav class="navbar navbar-expand-lg" style="background-color: #bfff7f;" >
+  <nav class="navbar navbar-expand-lg" style="background-image: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);" >
     <div class="container">
-      <a class="navbar-brand" href="/"><%= image_tag 'gemina1.gif' %></a>
+      <a class="navbar-brand" href="/"><%= image_tag 'header/Gamina2.gif' %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -11,43 +11,43 @@
           <% if user_signed_in? %>
             <li>
               <%= link_to user_path(current_user.id), class: "mx-3" do %>
-                <%= image_tag 'homes.gif' %>
+                <%= image_tag 'header/homes.gif' %>
               <% end %>
             </li>
             <li>
               <%= link_to users_path, class: "mx-3" do %>
-                <%= image_tag 'users.gif' %>
+                <%= image_tag 'header/users.gif' %>
               <% end %>
             </li>
             <li>
               <%= link_to posts_path, class: "mx-3" do %>
-                <%= image_tag 'posts.gif' %>
+                <%= image_tag 'header/posts.gif' %>
               <% end %>
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete, class: "mx-3" do %>
-                <%= image_tag 'log out.gif' %>
+                <%= image_tag 'header/log out.gif' %>
               <% end %>
             </li>
           <% else %>
             <li>
               <%= link_to root_path, class: "mx-3" do %>
-                <%= image_tag 'homes.gif' %>
+                <%= image_tag 'header/homes.gif' %>
               <% end %>
             </li>
             <li>
               <%= link_to about_path, class: "mx-3" do %>
-                <%= image_tag 'about.gif' %>
+                <%= image_tag 'header/about.gif' %>
               <% end %>
             </li>
             <li>
               <%= link_to new_user_registration_path, class: "mx-3" do %>
-                <%= image_tag 'sign up.gif' %>
+                <%= image_tag 'header/sign up.gif' %>
               <% end %>
             </li>
             <li>
               <%= link_to new_user_session_path, class: "mx-3" do %>
-                <%= image_tag 'log in.gif' %>
+                <%= image_tag 'header/log in.gif' %>
               <% end %>
             </li>
           <% end %>

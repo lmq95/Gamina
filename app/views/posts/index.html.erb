@@ -8,9 +8,9 @@
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
-            <th></th>
             <th>name</th>
             <th>title</th>
+            <th>review</th>
             <th></th>
             <th></th>
           </tr>
@@ -24,7 +24,20 @@
               <% end %>
             </td>
             <td><%= link_to post.title, post_path(post.id) %></td>
-            <td></td>
+            <td>
+              <div id="star-rate-<%= post.id %>"></div>
+              <script>
+                $('#star-rate-<%= post.id %>').raty({
+                  size: 36,
+                  starOff: "<%= asset_path('star/off-star.gif') %>",
+                  starOn: "<%= asset_path('star/on-star.gif') %>",
+                  starHalf: "<%= asset_path('star/half-star.gif') %>",
+                  half: true,
+                  readOnly: true,
+                  score: <%= post.rate %>,
+                });
+              </script>
+            </td>
             <td><i class="far fa-comment-alt"><%= post.post_comments.count %></i></td>
           </tr>
           <% end %>

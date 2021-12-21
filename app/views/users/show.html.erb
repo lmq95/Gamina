@@ -41,9 +41,9 @@
               <script>
                 $('#star-rate-<%= post.id %>').raty({
                   size: 36,
-                  starOff: "<%= asset_path('off-star.gif') %>",
-                  starOn: "<%= asset_path('on-star.gif') %>",
-                  starHalf: "<%= asset_path('half-star.gif') %>",
+                  starOff: "<%= asset_path('star/off-star.gif') %>",
+                  starOn: "<%= asset_path('star/on-star.gif') %>",
+                  starHalf: "<%= asset_path('star/half-star.gif') %>",
                   half: true,
                   readOnly: true,
                   score: <%= post.rate %>,
