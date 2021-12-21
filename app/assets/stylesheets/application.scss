@@ -16,6 +16,10 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+@font-face{
+  font-family: 'MyFont';
+  src: url("/PIXELMPLUS12-REGULAR.TTF");
+}
 
 .fa, .fas {
   font-family: 'Font Awesome 5 Free';
@@ -25,7 +29,7 @@
 
 body {
   background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
-  font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+  font-family:'MyFont',"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 }
 
 .heart_red{
