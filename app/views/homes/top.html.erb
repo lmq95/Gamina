@@ -2,20 +2,22 @@
   <div class="row">
     <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
       <a class="d-flex justify-content-center pt-5" href="/"><%= image_tag 'home/Gamina7.gif' %></a>
-      <p class="d-flex justify-content-center pt-5">
+      <div class="d-flex justify-content-center pt-5">
+        <p>
         <%= link_to about_path do %>
           <%= image_tag 'home/about4.gif', class: "pr-3" %>
         <% end %>
+        </br>
+          このサイトについて
+        </p>
+        <p>
         <%= link_to attention_path do %>
           <%= image_tag 'home/attention1.gif', class: "pl-3" %>
         <% end %>
+        </br>
+          注意書きです
         </p>
-      <p>会員の方は <%= link_to "ログイン", new_user_session_path %> へ</p>
-        <% if user_signed_in? %>
-          <p>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-          </p>
-        <% end %>
+      </div>
     </div>
   </div>
 </div>
