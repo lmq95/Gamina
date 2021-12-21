@@ -10,17 +10,10 @@
       <td><%= post_comment.comment %></td>
       <td>
         <% if post_comment_user == current_user %>
-          <%= link_to "", post_post_comment_path(post_comment.post_id, post_comment.id), method: :delete, class: "fas fa-trash-alt" %>
+          <%= link_to "", post_post_comment_path(post_comment.post_id, post_comment.id), method: :delete, remote: true, class: "fas fa-trash-alt" %>
         <% end %>
       </td>
     </tr>
   <% end %>
 </table>
-<div class ="form-group">
-  <%= form_with model:[post, post_comment], local: true do |f| %>
-    <%= f.text_area :comment, size:"45x5" %><br>
-    <div class="form-group">
-      <input type="submit" value="&#xf27a; comments" class="fas btn btn-success">
-    </div>
-  <% end %>
-</div>
+</br>
