@@ -64,9 +64,9 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-
-
+  
   #バリデーション
+  validates :name,  presence:{ message: "は１文字以上入力してください。" }
   validates :gender, inclusion: { in: [0] }
 
 

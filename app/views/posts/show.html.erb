@@ -5,11 +5,17 @@
     </div>
     <div class="col-md-8 offset-md-1 pt-3">
       <table class="table table-hover table-inverse" >
+        <thead>
+          <th></th>
+          <th>title</th>
+          <th>review</th>
+          <th></th>
+          <th></th>
+        </thead>
         <tbody>
           <tr>
             <td><%= attachment_image_tag @post.user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle" %></td>
             <td><%= @post.title %></td>
-            <td><%= @post.body %></td>
             <td>
               <div id="star-rate-<%= @post.id %>"></div>
               <script>
@@ -34,6 +40,9 @@
           </tr>
         </tbody>
       </table>
+      <div>
+        <p><strong>body :　</strong><%= @post.body %></p>
+      </div>
       <div id="comment">
         <%= render 'post_comments/comment', post: @post %>
       </div>
