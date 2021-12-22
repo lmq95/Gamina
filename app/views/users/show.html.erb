@@ -3,24 +3,34 @@
     <div class="col-md-3 mx-auto">
       <%= render 'users/info', user: @user %>
     </div>
-    
+
     <div class="col-md-8 offset-md-1 pt-3">
-      
       <% unless @user.id == current_user.id %>
         <% if current_user.following?(@user) && @user.following?(current_user) %>
         <% if @is_room == true %>
-          <%= link_to "message", room_path(@room_id), class: 'btn-sm btn-primary' %>
-        <% else %>
-          <%= form_with model: @room, url: rooms_path, local: true do |f| %>
-            <%= fields_for @entry do |e| %>
-              <%= e.hidden_field :user_id, value: @user.id %>
-            <% end %>
-            <%= f.submit "start message", class: 'btn-sm btn-success' %>
+          <%= link_to room_path(@room_id) do %>
+            <%= image_tag 'mail1.gif' %>
           <% end %>
+        <% else %>
+        <table>
+          <tr>
+            <td>
+              <%= form_with model: @room, url: rooms_path, local: true do |f| %>
+                <%= fields_for @entry do |e| %>
+                  <%= e.hidden_field :user_id, value: @user.id %>
+                <% end %>
+                <%= button_tag type: :submit, class: "mail" do %>
+                  <%= image_tag "mail-s.gif" %>
+                <% end %>
+              <% end %>
+            </td>
+            <td><p><strong>start DM</strong></p></td>
+          </tr>
+          </table>
         <% end %>
         <% end %>
       <% end %>
-      
+
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
@@ -50,11 +60,11 @@
                 });
               </script>
             </td>
-              <td>comments: <%= post.post_comments.count %></td>
+              <td><i class="far fa-comment-alt"> <%= post.post_comments.count %></i></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-  </div>  
+  </div>
 </div>

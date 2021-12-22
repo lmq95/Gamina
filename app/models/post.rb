@@ -46,5 +46,13 @@ class Post < ApplicationRecord
     end
     notification.save if notification.valid?
   end
+  
+  #検索分岐
+  def self.search(word)
+    where("title LIKE? OR body LIKE?", "%#{word}%", "%#{word}%")
+  end
+
+  validates :title, presence: true
+  validates :body, presence: true, length: { maximum: 200 }
 
 end

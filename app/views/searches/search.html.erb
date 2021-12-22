@@ -1,0 +1,23 @@
+<% if @post.exists? %>
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>title</th>
+      <th>review</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @post.each do |post| %>
+    <tr>
+      <td><%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle" %></td>
+      <td><%= link_to post.title, post_path(post.id) %></td>
+      <td></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+  <p>一致するワードはありませんでした</p>
+<% end %>
+
