@@ -194,9 +194,6 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
-    rails-i18n (5.1.3)
-      i18n (>= 0.7, < 2)
-      railties (>= 5.0, < 6)
     railties (5.2.6)
       actionpack (= 5.2.6)
       activesupport (= 5.2.6)
@@ -232,6 +229,10 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.14.0)
       parser (>= 3.0.1.1)
+    rubocop-rails (2.12.4)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 1.7.0, < 2.0)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
     ruby_dep (1.5.0)
@@ -319,10 +320,10 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.5)
-  rails-i18n (~> 5.1)
   refile!
   refile-mini_magick
   rubocop
+  rubocop-rails
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

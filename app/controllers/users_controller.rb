@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def index
     @users = User.all
   end
@@ -11,7 +10,7 @@ class UsersController < ApplicationController
     unless @user.id == current_user.id
       @current_entry.each do |current|
         @another_entry.each do |another|
-          #ルームが存在する場合
+          # ルームが存在する場合
           if current.room_id == another.room_id
             @is_room = true
             @room_id = current.room_id
@@ -35,9 +34,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.id = current_user.id
     if @user.update(user_params)
-       redirect_to user_path(current_user.id)
+      redirect_to user_path(current_user.id)
     else
-       render 'edit'
+      render 'edit'
     end
   end
 
@@ -46,5 +45,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
   end
-
 end

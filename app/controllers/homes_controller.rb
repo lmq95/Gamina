@@ -1,11 +1,7 @@
 class HomesController < ApplicationController
-  def top
-  end
-  
-  def about
-  end
-  
-  def attention
-  end
-  
+  def top; end
+
+  def about; end
+
+  def attention; end
 end
