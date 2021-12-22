@@ -65,4 +65,9 @@ class User < ApplicationRecord
     end
   end
 
+
+  #バリデーション
+  validates :gender, inclusion: { in: [0] }
+
+
 end
