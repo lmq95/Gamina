@@ -1,6 +1,12 @@
-  <div class="search_form float-right mt-2">
-    <%= form_with url: search_path, local: true, method: :get do |f| %>
-      <%= f.text_field :word, class: "col-5", placeholder: "Search"%>
-  　　<input type="submit" value="&#xf002;" class="fas btn btn-light search">
-    <% end %>
-  </div>
+<div class="search_form float-right">
+   <%= form_with url: search_path, local: true, method: :get do |f| %>
+    <div class="input-group mb-3">
+     <%= f.text_field :word, class: "col-8 form-control", placeholder: "Search"%>
+      <div class="input-group-append">
+         <%= button_tag type: :submit, class: "search" do %>
+         <%= image_tag 'mushi1.gif' %>
+         <% end %>
+      </div>
+    </div>
+   <% end %>
+</div>
