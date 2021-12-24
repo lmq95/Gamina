@@ -5,11 +5,13 @@
     </div>
     
     <div class="col-md-8 offset-md-1 pt-3">
+      <div><%= image_tag 'head/time' %><%= image_tag 'head/line' %></div>
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
             <th>name</th>
             <th>title</th>
+            <th>body</th>
             <th>review</th>
             <th></th>
             <th></th>
@@ -24,6 +26,7 @@
               <% end %>
             </td>
             <td><%= link_to post.title, post_path(post.id) %></td>
+            <td><%= post.body[0..12] %></td>
             <td>
               <div id="star-rate-<%= post.id %>"></div>
               <script>

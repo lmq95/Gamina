@@ -17,7 +17,7 @@
       <div class="chats">
         <% if @messages.present? %>
           <% @messages.each do |m| %>
-            <%= attachment_image_tag m.user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle" %>
+            <%= attachment_image_tag m.user, :profile_image, :fill, 25, 25, fallback: "no-image-icon.png", class: "rounded-circle" %>
             <strong><%= m.body %></strong> <br>
             <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
           <% end %>

@@ -13,9 +13,6 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <% if user_signed_in? %>
-      <%= render 'layouts/search' %>
-    <% end %>
     <%= yield %>
     <%= render 'layouts/footer' %>
   </body>
