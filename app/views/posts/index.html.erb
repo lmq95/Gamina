@@ -9,6 +9,7 @@
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
+            <th></th>
             <th>name</th>
             <th>title</th>
             <th>body</th>
@@ -25,8 +26,9 @@
                 <%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle" %>
               <% end %>
             </td>
+            <td><%= post.user.name %></td>
             <td><%= link_to post.title, post_path(post.id) %></td>
-            <td><%= post.body[0..12] %></td>
+            <td><%= post.body[0..15] %></td>
             <td>
               <div id="star-rate-<%= post.id %>"></div>
               <script>
