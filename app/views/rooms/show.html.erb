@@ -1,35 +1,48 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <div class="left-button">
-        <%= link_to "ユーザー一覧へ", users_path %>
-      </div>
-      <h4 class="rooms-title">気になる同士</h4>
-      <div class="d-flex align-content-between">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 pt-3 mx-auto">
+      <div class="d-flex align-content-between pt-3">
+        <%= image_tag 'head/DM' %>
         <% @entries.includes([:user]).each do |e| %>
         <strong>
-          <%= attachment_image_tag e.user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle ml-4" %></br>
+          <%= attachment_image_tag e.user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle ml-4" %>
           <%= link_to e.user.name, user_path(e.user.id), class: "ml-4" %>
         </strong>
         <% end %>
       </div>
+       
+      <div class="posts pt-4">
+        <%= form_for @message do |f| %>
+         <%= render 'layouts/error_messages', model: f.object %>
+        <div class="input-group">
+          <%= f.text_field :body, placeholder: "メッセージを入力して下さい" , size: 40, class:"form-control form-control-sm d-inline col-md-9" %>
+          <%= f.hidden_field :room_id, value: @room.id %>
+          <div class="input-group-append">
+            <%= f.submit "send", class: 'btn btn-sm btn-success d-inline '%>
+          </div>
+        </div>
+        <% end %>
+        </div>
       <hr>
-      <div class="chats">
+      <div class="messages">
         <% if @messages.present? %>
-          <% @messages.each do |m| %>
-            <%= attachment_image_tag m.user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle" %>
-            <strong><%= m.body %></strong> <br>
-            <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
+          <% @messages.includes([:user]).each do |m| %>
+            <% if m.user == current_user %> 
+              <div class="text-right my-2">
+                <strong><%= m.body %></strong>
+                <%= attachment_image_tag m.user, :profile_image, :fill, 25, 25, fallback: "no-image-icon.png", class: "rounded-circle" %> <br>
+                <%= m.created_at.strftime("%Y-%m-%d %H:%M")%><br>
+              </div>
+            <% else %>
+              <div class="text-left my-2">
+                <%= attachment_image_tag m.user, :profile_image, :fill, 25, 25, fallback: "no-image-icon.png", class: "rounded-circle" %>
+                <strong><%= m.body %></strong> <br>
+                <%= m.created_at.strftime("%Y-%m-%d %H:%M")%><br>
+              </div>
+              <% end %>
           <% end %>
         <% end %>
       </div>
-      <div class="posts">
-        <%= form_for @message do |f| %>
-          <%= f.text_field :body, placeholder: "メッセージを入力して下さい" , size: 40, class:"form-text-field" %>
-            <%= f.hidden_field :room_id, value: @room.id %>
-              <%= f.submit "send", class: 'btn btn-success '%>
-        <% end %>
-        </div>
     </div>
   </div>
 </div>

@@ -5,13 +5,14 @@
     </div>
       
     <div class="col-md-8 offset-md-1 pt-3">
+      <div><%= image_tag 'head/time' %><%= image_tag 'head/line' %></div>
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
             <th></th>
-            <th>Group name</th>
-            <th>Group introduction</th>
-            <th>menber</th>
+            <th>グループ名</th>
+            <th>紹介文</th>
+            <th>メンバー</th>
           </tr>
         </thead>
         <tbody>
@@ -27,6 +28,10 @@
             <td>
               <% if @group.owner_id == current_user.id %>
                 <%= link_to "", edit_group_path(@group), class: "fas fa-pencil-alt" %>
+              <% elsif @group.users.include?(current_user) %>
+              <td><%= link_to 'Leave', group_path(@group), method: :delete, class: "btn btn-sm btn-danger" %></td>
+              <% else %>
+                <td><%= link_to 'Join', group_join_path(@group), class: "btn btn-sm btn-success" %></td>
               <% end %>
             </td>
           </tr>

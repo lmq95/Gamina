@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_current_user, {only: [:edit]}
+  
   def index
     @posts = Post.where(user_id: [current_user.id, *current_user.following_ids]).includes([:user])
   end
@@ -12,7 +15,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    if @post.save!(post_params)
+    if @post.save
       redirect_to post_path(@post)
     else
       render 'new'
@@ -51,4 +54,12 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :body, :genre, :rate)
   end
+  
+  def ensure_current_user
+    @post = Post.find(params[:id])
+    unless @post.user == current_user
+      redirect_to posts_path
+    end
+  end
+  
 end

@@ -1,7 +1,7 @@
 <div class="container py-5 px-sm-0">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h2>新規登録</h2>
+      <div><%= image_tag 'head/signup', class: "mb-3" %></div>
       
       <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
@@ -38,7 +38,7 @@
         </div>
       
         <div class="actions">
-          <%= f.submit "Sign up" %>
+          <input type="submit" value="&#xf234; Sign up" class="fas btn btn-sm btn-success mb-3">
         </div>
       <% end %>
       

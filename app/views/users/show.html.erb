@@ -5,63 +5,74 @@
     </div>
 
     <div class="col-md-8 offset-md-1 pt-3">
-      <% unless @user.id == current_user.id %>
-        <% if current_user.following?(@user) && @user.following?(current_user) %>
-        <% if @is_room == true %>
-          <%= link_to room_path(@room_id) do %>
-            <%= image_tag 'mail1.gif' %>
+      <h3>
+        <%= @user.name %>'s My page
+        <% unless @user.id == current_user.id %>
+          <% if current_user.following?(@user) && @user.following?(current_user) %>
+          <% if @is_room == true %>
+            <%= link_to room_path(@room_id) do %>
+              <%= image_tag 'mail1.gif' %>
+            <% end %>
+          <% else %>
+          <table>
+            <tr>
+              <td>
+                <%= form_with model: @room, url: rooms_path, local: true do |f| %>
+                  <%= fields_for @entry do |e| %>
+                    <%= e.hidden_field :user_id, value: @user.id %>
+                  <% end %>
+                  <%= button_tag type: :submit, class: "mail" do %>
+                    <%= image_tag "mail-s.gif" %>
+                  <% end %>
+                <% end %>
+              </td>
+              <td><p><strong>start DM</strong></p></td>
+            </tr>
+            </table>
           <% end %>
-        <% else %>
-        <table>
-          <tr>
-            <td>
-              <%= form_with model: @room, url: rooms_path, local: true do |f| %>
-                <%= fields_for @entry do |e| %>
-                  <%= e.hidden_field :user_id, value: @user.id %>
-                <% end %>
-                <%= button_tag type: :submit, class: "mail" do %>
-                  <%= image_tag "mail-s.gif" %>
-                <% end %>
-              <% end %>
-            </td>
-            <td><p><strong>start DM</strong></p></td>
-          </tr>
-          </table>
-        <% end %>
-        <% end %>
+          <% end %>
       <% end %>
-
+     </h3>
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
             <th></th>
-            <th>title</th>
-            <th>review</th>
+            <th>タイトル</th>
+            <th>レビュー</th>
             <th></th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <% @posts.each do |post| %>
+          <% if @posts.exists? %>
+            <% @posts.each do |post| %>
+              <tr>
+                <td><%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle" %></td>
+                <td><%= link_to post.title, post_path(post.id) %></td>
+                <td>
+                <div id="star-rate-<%= post.id %>"></div>
+                <script>
+                  $('#star-rate-<%= post.id %>').raty({
+                    size: 36,
+                    starOff: "<%= asset_path('star/off-star.gif') %>",
+                    starOn: "<%= asset_path('star/on-star.gif') %>",
+                    starHalf: "<%= asset_path('star/half-star.gif') %>",
+                    half: true,
+                    readOnly: true,
+                    score: <%= post.rate %>,
+                  });
+                </script>
+              </td>
+                <td><i class="far fa-comment-alt"> <%= post.post_comments.count %></i></td>
+              </tr>
+            <% end %>
+          <% else %>
             <tr>
-              <td><%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle" %></td>
-              <td><%= link_to post.title, post_path(post.id) %></td>
-              <td>
-              <div id="star-rate-<%= post.id %>"></div>
-              <script>
-                $('#star-rate-<%= post.id %>').raty({
-                  size: 36,
-                  starOff: "<%= asset_path('star/off-star.gif') %>",
-                  starOn: "<%= asset_path('star/on-star.gif') %>",
-                  starHalf: "<%= asset_path('star/half-star.gif') %>",
-                  half: true,
-                  readOnly: true,
-                  score: <%= post.rate %>,
-                });
-              </script>
-            </td>
-              <td><i class="far fa-comment-alt"> <%= post.post_comments.count %></i></td>
-            </tr>
+              <td></td>
+              <td>記事はありません</td>
+              <td></td>
+              <td></td>
+              </tr>
           <% end %>
         </tbody>
       </table>

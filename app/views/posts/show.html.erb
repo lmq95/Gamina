@@ -4,20 +4,25 @@
       <%= render 'users/info', user: current_user %>
     </div>
     <div class="col-md-8 offset-md-1 pt-3">
-      <table class="table table-hover table-inverse" >
-        <thead>
-          <th></th>
-          <th>title</th>
-          <th>review</th>
-          <th></th>
-          <th></th>
-        </thead>
+      <div>
+        <%= image_tag 'head/post1' %><%= image_tag 'head/detail' %>
+        <%= attachment_image_tag @post.user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle ml-3" %>
+          <% if @post.user_id == current_user.id %>
+              <%= link_to "", edit_post_path(@post), class: "fas fa-pencil-alt" %>
+              <%= link_to "", post_path(@post), method: :delete, data: {confirm: "本当に消しますか？"}, class: "fas fa-trash-alt" %>
+            <% end %>
+      </div>
+      <table class="table table-hover table-inverse mt-3" >
         <tbody>
           <tr>
-            <td><%= attachment_image_tag @post.user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle" %></td>
-            <td><%= @post.title %></td>
-            <td>
-              <div id="star-rate-<%= @post.id %>"></div>
+          <th>タイトル</th>
+          <td><%= @post.title %></td>
+          <td id="favorite_<%= @post.id %>"><%= render 'favorites/favorite', post: @post %></td>
+          </tr>
+          <tr>
+          <th>レビュー</th>
+          <td>
+            <div id="star-rate-<%= @post.id %>"></div>
               <script>
                 $('#star-rate-<%= @post.id %>').raty({
                   size: 36,
@@ -29,27 +34,22 @@
                   score: <%= @post.rate %>
                 });
               </script>
-            </td>
-            
-            <td id="favorite_<%= @post.id %>"><%= render 'favorites/favorite', post: @post %></td>
-            
-            <% if @post.user_id == current_user.id %>
-              <td><%= link_to "", edit_post_path(@post), class: "fas fa-pencil-alt" %></td>
-              <td><%= link_to "", post_path(@post), method: :delete, data: {confirm: "本当に消しますか？"}, class: "fas fa-trash-alt" %></td>
-            <% end %>
+          </td>
           </tr>
+          <th>本文</th>
+          <td><%= @post.body %></td>
         </tbody>
       </table>
-      <div>
-        <p><strong>body :　</strong><%= @post.body %></p>
-      </div>
+
+     <hr/>
+      <div class="pb-3"><%= image_tag 'head/comme' %><%= image_tag 'head/nts' %></div>
       <div id="comment">
         <%= render 'post_comments/comment', post: @post %>
       </div>
       <%= form_with(model:[@post, @post_comment]) do |f| %>
         <%= f.text_area :comment, size:"30x3" %><br>
         <div class="form-group">
-          <input type="submit" value="&#xf27a; comments" class="fas btn btn-success">
+          <input type="submit" value="&#xf27a; send" class="fas btn btn-sm btn-success">
         </div>
       <% end %>
     </div>

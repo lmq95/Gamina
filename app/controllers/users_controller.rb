@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_current_user, {only: [:edit]}
   def index
     @users = User.all
   end
@@ -47,4 +49,12 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
   end
+  
+  def ensure_current_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+       redirect_to user_path(current_user.id)
+    end
+  end
+  
 end

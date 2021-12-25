@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   resources :groups do
-    get 'join' => 'group#join', as: 'join'
+    get 'join' => 'groups#join', as: 'join'
   end
 
   resources :rooms, only: %i[create show]
