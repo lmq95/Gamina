@@ -14,8 +14,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   # グループ機能
-  has_many :group_users
   has_many :groups, through: :group_users
+  has_many :group_users
 
   # フォロー・フォロワー機能
   # 自分がフォローする（与フォロー側）

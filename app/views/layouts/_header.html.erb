@@ -3,7 +3,7 @@
     <div class="container">
       <a class="navbar-brand" href="/"><%= image_tag 'header/Gamina2.gif' %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon my-2"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -11,33 +11,35 @@
           <% if user_signed_in? %>
             <li>
               <%= link_to user_path(current_user.id), class: "mx-3" do %>
-                <%= image_tag 'header/homes.gif' %>
+                <%= image_tag 'header/home1.gif' %>
               <% end %>
             </li>
             <li>
               <%= link_to users_path, class: "mx-3" do %>
-                <%= image_tag 'header/users.gif' %>
+                <%= image_tag 'header/girl.gif' %>
               <% end %>
             </li>
             <li>
               <%= link_to posts_path, class: "mx-3" do %>
-                <%= image_tag 'header/posts.gif' %>
+                <%= image_tag 'header/book2.gif' %>
               <% end %>
             </li>
             <li>
-              <%= link_to destroy_user_session_path, method: :delete, class: "mx-3" do %>
-                <%= image_tag 'header/log out.gif' %>
+              <%= link_to notifications_path, class: "mx-3" do %>
+                <%= image_tag 'header/bell3.gif' %>
               <% end %>
             </li>
             <li>
-              <%= link_to notifications_path do %>
-                <%= image_tag 'header/bell1.gif' %>
-              <% end %>
-            </li>
             <% if unchecked_notifications.any? %>
               <i class="fa fa-circle n-circle" style="color: #efa04c;"></i>
             <% end %>
-            <li class="pl-5">
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, class: "mx-3", method: :delete do %>
+                <%= image_tag 'header/log out.gif' %>
+              <% end %>
+            </li>
+            <li class="pl-3">
               <%= render 'layouts/search' %>
             </li>
           <% else %>

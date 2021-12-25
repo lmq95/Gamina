@@ -6,7 +6,7 @@
 
     <div class="col-md-8 offset-md-1 pt-3">
       <h3>
-        <%= @user.name %>'s index
+        <%= @user.name %>'s My page
         <% unless @user.id == current_user.id %>
           <% if current_user.following?(@user) && @user.following?(current_user) %>
           <% if @is_room == true %>
