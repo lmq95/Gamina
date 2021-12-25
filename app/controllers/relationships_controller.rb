@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class RelationshipsController < ApplicationController
+  before_action :authenticate_user!
   def create
     current_user.follow(params[:user_id])
     User.find(params[:user_id]).create_notification_follow!(current_user)

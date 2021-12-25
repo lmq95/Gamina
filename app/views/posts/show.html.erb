@@ -15,12 +15,12 @@
       <table class="table table-hover table-inverse mt-3" >
         <tbody>
           <tr>
-          <th>title</th>
+          <th>タイトル</th>
           <td><%= @post.title %></td>
           <td id="favorite_<%= @post.id %>"><%= render 'favorites/favorite', post: @post %></td>
           </tr>
           <tr>
-          <th>review</th>
+          <th>レビュー</th>
           <td>
             <div id="star-rate-<%= @post.id %>"></div>
               <script>
@@ -36,7 +36,7 @@
               </script>
           </td>
           </tr>
-          <th>body</th>
+          <th>本文</th>
           <td><%= @post.body %></td>
         </tbody>
       </table>
