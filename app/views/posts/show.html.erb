@@ -1,0 +1,57 @@
+<div class="container py-3 px-sm-0">
+  <div class="row">
+    <div class="col-md-3 mx-auto">
+      <%= render 'users/info', user: @user %>
+    </div>
+    <div class="col-md-8 offset-md-1 pt-3">
+      <div>
+        <%= image_tag 'head/post1' %><%= image_tag 'head/detail' %>
+        <%= attachment_image_tag @post.user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle ml-3" %>
+          <% if @post.user_id == current_user.id %>
+              <%= link_to "", edit_post_path(@post), class: "fas fa-pencil-alt" %>
+              <%= link_to "", post_path(@post), method: :delete, data: {confirm: "本当に消しますか？"}, class: "fas fa-trash-alt" %>
+            <% end %>
+      </div>
+      <table class="table table-hover table-inverse mt-3" >
+        <tbody>
+          <tr>
+          <th>タイトル</th>
+          <td><%= @post.title %></td>
+          <td id="favorite_<%= @post.id %>"><%= render 'favorites/favorite', post: @post %></td>
+          </tr>
+          <tr>
+          <th>レビュー</th>
+          <td>
+            <div id="star-rate-<%= @post.id %>"></div>
+              <script>
+                $('#star-rate-<%= @post.id %>').raty({
+                  size: 36,
+                  starOff: "<%= asset_path('star/off-star.gif') %>",
+                  starOn: "<%= asset_path('star/on-star.gif') %>",
+                  starHalf: "<%= asset_path('star/half-star.gif') %>",
+                  half: true,
+                  readOnly: true,
+                  score: <%= @post.rate %>
+                });
+              </script>
+          </td>
+          </tr>
+          <th>本文</th>
+          <td><%= @post.body %></td>
+        </tbody>
+      </table>
+
+     <hr/>
+      <div class="pb-3"><%= image_tag 'head/comme' %><%= image_tag 'head/nts' %></div>
+      <div id="comment">
+        <%= render 'post_comments/comment', post: @post %>
+      </div>
+      <%= form_with(model:[@post, @post_comment]) do |f| %>
+        <%= f.text_area :comment, size:"30x3" %><br>
+        <div class="form-group">
+          <input type="submit" value="&#xf27a; send" class="fas btn btn-sm btn-success">
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
