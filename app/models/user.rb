@@ -65,6 +65,7 @@ class User < ApplicationRecord
   end
 
   # バリデーション
-  validates :name, presence: { message: 'は１文字以上入力してください。' }
+  validates :name, uniqueness: true, length: { minimum: 2, maximum: 20, message: 'は１文字以上入力してください。' }
   validates :gender, inclusion: { in: %w(女性), message: 'は登録できません' }
+  validates :introduction, length: { maximum: 50 }
 end

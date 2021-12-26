@@ -50,6 +50,6 @@ class Post < ApplicationRecord
     where('title LIKE? OR body LIKE?', "%#{word}%", "%#{word}%")
   end
 
-  validates :title, presence: true
+  validates :title, presence: true, length: { minimum: 2 }
   validates :body, presence: true, length: { maximum: 300 }
 end
