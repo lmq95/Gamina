@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 pt-3 mx-auto">
       <div class="d-flex align-content-between pt-3">
-        <%= image_tag 'head/DM' %>
+        <%= image_tag 'head/DM.gif' %>
         <% @entries.includes([:user]).each do |e| %>
         <strong>
           <%= attachment_image_tag e.user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle ml-4" %>
