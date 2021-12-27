@@ -25,11 +25,9 @@
               <% end %>
             </li>
             <li>
-              <%= link_to notifications_path, class: "mx-3" do %>
+              <%= link_to notifications_path, class: "ml-3" do %>
                 <%= image_tag 'header/bell3.gif' %>
               <% end %>
-            </li>
-            <li>
             <% if unchecked_notifications.any? %>
               <i class="fa fa-circle n-circle" style="color: #efa04c;"></i>
             <% end %>
