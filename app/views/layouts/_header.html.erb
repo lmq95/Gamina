@@ -44,11 +44,6 @@
             </li>
           <% else %>
             <li>
-              <%= link_to attention_path, class: "mx-3" do %>
-                <%= image_tag 'header/!.gif' %>
-              <% end %>
-            </li>
-            <li>
               <%= link_to root_path, class: "mx-3" do %>
                 <%= image_tag 'header/homes.gif' %>
               <% end %>
@@ -56,6 +51,11 @@
             <li>
               <%= link_to about_path, class: "mx-3" do %>
                 <%= image_tag 'header/about.gif' %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to attention_path, class: "mx-3" do %>
+                <%= image_tag 'header/!.gif' %> <%= image_tag 'header/sign up.gif' %>
               <% end %>
             </li>
             <li>
