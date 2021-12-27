@@ -20,7 +20,10 @@
 ユーザーをして、個別でDMを送ることなどもできます
   
 ## 設計書  
-今後作成予定　　
+* [ER図](https://github.com/lmq95/Gamina/blob/main/app/assets/document_image/Gamina_ER.png)
+* [テーブル定義書一覧](https://github.com/lmq95/Gamina/blob/main/app/assets/document_image/Gamina_table.png)
+* [テーブル定義書詳細①](https://github.com/lmq95/Gamina/blob/main/app/assets/document_image/Gamina_table2.jpg)
+* [テーブル定義書詳細②](https://github.com/lmq95/Gamina/blob/main/app/assets/document_image/Gamina_table3.jpg)　　
   
   
 ## チャレンジ要素一覧  
