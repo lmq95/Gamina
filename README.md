@@ -39,5 +39,5 @@ https://docs.google.com/spreadsheets/d/1p1sJk716pfMPlaI2u1nUXBEcVyJFx6JQsjgFtnx1
   
   
 ## 使用素材  
-
+* フォント:PixelMplus12-Regular
   
