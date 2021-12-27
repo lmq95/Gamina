@@ -10,15 +10,3 @@ ja:
         name: 名前
         introduction: 紹介文
         profile_image: プロフィール画像
-      post:
-        title: タイトル
-        genre: ジャンル
-        body:　本文
-        rate: レビュー
-      postcomment:
-        comment: コメント
-      group:
-        name: グループ名
-        introduction: グループ紹介文
-      message:
-        body: メッセージ文
