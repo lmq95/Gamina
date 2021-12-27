@@ -15,10 +15,10 @@ ja:
         genre: ジャンル
         body:　本文
         rate: レビュー
-      post_comment:
+      postcomment:
         comment: コメント
       group:
         name: グループ名
         introduction: グループ紹介文
       message:
-        body: メッセージ
+        body: メッセージ文
