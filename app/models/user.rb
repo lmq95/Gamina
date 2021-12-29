@@ -16,6 +16,7 @@ class User < ApplicationRecord
   # グループ機能
   has_many :groups, through: :group_users
   has_many :group_users
+  has_many :owned_groups, class_name: "Group"
 
   # フォロー・フォロワー機能
   # 自分がフォローする（与フォロー側）

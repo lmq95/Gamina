@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :groups do
     get 'join' => 'groups#join', as: 'join'
   end
+  get 'groups/:id/member' => 'groups#member', as: 'member'
 
   resources :rooms, only: %i[create show]
   resources :messages, only: [:create]

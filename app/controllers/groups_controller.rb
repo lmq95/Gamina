@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new(group_params)
+    @group = current_user.owned_groups.new(group_params)
     @group.owner_id = current_user.id
     @group.users << current_user
     if @group.save
@@ -23,6 +23,10 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @group = Group.find(params[:id])
+  end
+  
+  def member
     @group = Group.find(params[:id])
   end
 

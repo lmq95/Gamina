@@ -1,30 +1,16 @@
-<div class="container">
+<div class="container py-3 px-sm-0">
   <div class="row">
     <div class="col-md-3 mx-auto">
       <%= render 'users/info', user: current_user %>
     </div>
-      
-    <div class="col-md-8 offset-md-1 pt-3">
-      <div><%= image_tag 'head/time.gif' %><%= image_tag 'head/line.gif' %></div>
-      <table class="table table-hover table-inverse">
-        <thead>
-          <tr>
-            <th></th>
-            <th>グループ名</th>
-            <th>紹介文</th>
-            <th>メンバー</th>
-          </tr>
-        </thead>
+
+    <div class="col-md-8 offset-md-1">
+      <div class="py-3"><%= image_tag 'head/group.gif' %><%= image_tag 'head/detail.gif' %></div>
+      <table class="table table-hover table-inverse col-md-10">
         <tbody>
           <tr>
-            <td></td>
+            <th>グループ名</th>
             <td><%= @group.name %></td>
-            <td><%= @group.introduction %></td>
-            <td>
-              <% @group.users.each do |member| %>
-                <%= member.name %>
-              <% end %>
-            </td>
             <td>
               <% if @group.owner_id == current_user.id %>
                 <%= link_to "", edit_group_path(@group), class: "fas fa-pencil-alt" %>
@@ -35,8 +21,25 @@
               <% end %>
             </td>
           </tr>
+          <tr>
+            <th>グループオーナー</th>
+            <td><%= @group.user ? @group.user.name : "不明" %></td>
+          </tr>
+          <tr>
+            <th>紹介文</th>
+            <td><%= @group.introduction %></td>
+          </tr>
+          <tr>
+            <th><%= link_to "メンバー一覧", member_path(@group) %></th>
+            <td></td>
+          </tr>
+        </tbody>
+            <td>
+              
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
-  </div>  
+  </div>
 </div>
