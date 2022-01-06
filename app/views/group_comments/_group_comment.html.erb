@@ -7,10 +7,10 @@
           <%= attachment_image_tag group_comment_user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle" %>
         <% end %>
       </td>
-      <td><%= group_comment.comment %></td>
+      <td><%= group_comment.group_comment %></td>
       <td>
         <% if group_comment_user == current_user %>
-          <%= link_to "", group_group_comment_path(group_comment.group_id, group_comment.id), method: :delete, remote: true, class: "fas fa-trash-alt" %>
+          <%= link_to "", group_group_comment_path(group_comment.group_id, group_comment.id), remote: true, method: :delete, class: "fas fa-trash-alt" %>
         <% end %>
       </td>
     </tr>

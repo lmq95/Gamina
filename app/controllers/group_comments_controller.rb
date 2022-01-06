@@ -5,7 +5,6 @@ class GroupCommentsController < ApplicationController
     @group_comment.group_id = @group.id
     @group_comment.user_id = current_user.id
     if @group_comment.save
-      redirect_to group_path(@group)
     else
       render 'groups/show'
     end

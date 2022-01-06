@@ -35,8 +35,18 @@
           </tr>
         </tbody>
       </table>
-      <hr/>
-      
+      <% if @group.users.include?(current_user) %>
+        <hr/>
+        <div class="pb-3"><%= image_tag 'head/comme.gif' %><%= image_tag 'head/nts.gif' %></div>
+        
+        <%= render 'group_comments/group_comment', group: @group %>
+        <%= form_with(model:[@group, @group_comment]) do |f| %>
+          <%= f.text_area :group_comment, size:"30x3" %><br>
+          <div class="form-group">
+            <input type="submit" value="&#xf27a; send" class="fas btn btn-sm btn-success">
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
