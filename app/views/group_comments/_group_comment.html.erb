@@ -1,0 +1,19 @@
+<table>
+  <% group.group_comments.each do |group_comment| %>
+    <% group_comment_user = group_comment.user %>
+    <tr>
+      <td>
+        <%= link_to user_path(group_comment_user) do %>
+          <%= attachment_image_tag group_comment_user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle" %>
+        <% end %>
+      </td>
+      <td><%= group_comment.comment %></td>
+      <td>
+        <% if group_comment_user == current_user %>
+          <%= link_to "", group_group_comment_path(group_comment.group_id, group_comment.id), method: :delete, remote: true, class: "fas fa-trash-alt" %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+</br>
