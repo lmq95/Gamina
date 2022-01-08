@@ -24,8 +24,8 @@
                 <%= image_tag 'header/book2.gif' %>
               <% end %>
             </li>
-            <li>
-              <%= link_to notifications_path, class: "ml-3" do %>
+            <li class="mx-3">
+              <%= link_to notifications_path do %>
                 <%= image_tag 'header/bell3.gif' %>
               <% end %>
             <% if unchecked_notifications.any? %>
@@ -34,7 +34,7 @@
             </li>
             <li>
               <%= link_to destroy_user_session_path, class: "mx-3", method: :delete do %>
-                <%= image_tag 'header/log out.gif' %>
+                <%= image_tag 'header/logout2.gif' %>
               <% end %>
             </li>
             <li class="pl-3">
