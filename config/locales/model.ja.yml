@@ -10,7 +10,6 @@ ja:
         name: 名前
         introduction: 紹介文
         profile_image: プロフィール画像
-    attributes:
       post:
         title: タイトル
         genre: ジャンル

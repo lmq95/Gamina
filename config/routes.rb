@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'group_comments/create'
+  get 'group_comments/destroy'
   root to: 'homes#top'
   get '/about' => 'homes#about', as: 'about'
   get '/attention' => 'homes#attention', as: 'attention'
@@ -23,7 +25,9 @@ Rails.application.routes.draw do
 
   resources :groups do
     get 'join' => 'groups#join', as: 'join'
+    resources :group_comments, only: %i[create destroy]
   end
+  get 'groups/:id/member' => 'groups#member', as: 'member'
 
   resources :rooms, only: %i[create show]
   resources :messages, only: [:create]
