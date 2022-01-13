@@ -5,10 +5,10 @@
     </div>
     <div class="col-md-8 offset-md-1 pt-3">
       <div>
-        <%= image_tag 'head/post1.gif' %><%= image_tag 'head/detail.gif' %>
-        <%= attachment_image_tag @post.user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle ml-3" %>
+        <%= image_tag 'head/post1.gif' %><%= image_tag 'head/detail.gif' %>&nbsp;
+        <%= attachment_image_tag @post.user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle ml-3" %>&nbsp;&nbsp;
           <% if @post.user_id == current_user.id %>
-              <%= link_to "", edit_post_path(@post), class: "fas fa-pencil-alt" %>
+              <%= link_to "", edit_post_path(@post), class: "fas fa-pencil-alt" %>&nbsp;
               <%= link_to "", post_path(@post), method: :delete, data: {confirm: "本当に消しますか？"}, class: "fas fa-trash-alt" %>
             <% end %>
       </div>
