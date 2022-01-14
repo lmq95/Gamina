@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 pt-3 mx-auto">
+      <div class="d-flex align-content-between pt-3">
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>  
+              <th>名前</th>
+              <th>メッセージ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @another_entries.each do |entry| %>
+            <tr>
+              <td><%= link_to entry.user.name, room_path(entry.room) %></td>
+              <td>
+                 <%= Message.find_by(id: entry.room.message_ids.last)&.body %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
