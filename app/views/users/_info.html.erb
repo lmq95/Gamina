@@ -1,42 +1,43 @@
-<table class="table table-hover table-inverse">
-  <tbody>
-    <tr>
-      <%= link_to user_path(user) do %>
-        <%= attachment_image_tag user, :profile_image, :fill, 63, 63, fallback: "no-image.png", class: "rounded-circle" %>
-      <% end %>
-      <% if user.id == current_user.id %>
-        <%= link_to edit_user_path(user) do %>
-          <i class="btn btn-outline-secondary fas fa-user-cog ml-2 mt-4"></i>
+<div class="info">
+  <table class="table table-hover table-inverse">
+    <tbody>
+      <tr>
+        <%= link_to user_path(user) do %>
+          <%= attachment_image_tag user, :profile_image, :fill, 130, 130, fallback: "no-image.png", class: "rounded-circle" %>
         <% end %>
-      <% else %>
-        <% if current_user.following?(user) %>
-          <%= link_to "", user_relationships_path(user.id), method: :delete, class: "fas fa-user-minus btn btn-primary btn-sm ml-2 mt-4" %>
+        <% if user.id == current_user.id %>
+          <%= link_to edit_user_path(user) do %>
+            <i class="btn btn-outline-secondary fas fa-user-cog ml-2 mt-4"></i>
+          <% end %>
         <% else %>
-          <%= link_to "", user_relationships_path(user.id), method: :post, class: "fas fa-user-plus btn btn-success btn-sm ml-2 mt-4" %>
+          <% if current_user.following?(user) %>
+            <%= link_to "", user_relationships_path(user.id), method: :delete, class: "fas fa-user-minus btn btn-primary btn-sm ml-2 mt-4" %>
+          <% else %>
+            <%= link_to "", user_relationships_path(user.id), method: :post, class: "fas fa-user-plus btn btn-success btn-sm ml-2 mt-4" %>
+          <% end %>
         <% end %>
-      <% end %>
-    </tr>
-    <tr>
-      <th>name</th>
-      <th><%= user.name %></th>
-    </tr>
-    <tr>
-      <th>It's me!</th>
-      <th><%= user.introduction %></th>
-    </tr>
-    <tr>
-      <th>follows</th>
-      <th><%= link_to user.followings.count, user_followings_path(user) %></th>
-    </tr>
-    <tr>
-      <th>followers</th>
-      <th> <%= link_to user.followers.count, user_followers_path(user) %></th>
-    </tr>
-  </tbody>
-</table>
-<p>
-  <%= link_to new_post_path do %>
-          <div><%= image_tag 'memo.gif', class: "mb-3" %><strong>NEW</strong></div>
-  <% end %>
-</p>
-
+      </tr>
+      <tr>
+        <th>name</th>
+        <th><%= user.name %></th>
+      </tr>
+      <tr>
+        <th>It's me!</th>
+        <th><%= user.introduction %></th>
+      </tr>
+      <tr>
+        <th>follows</th>
+        <th><%= link_to user.followings.count, user_followings_path(user) %></th>
+      </tr>
+      <tr>
+        <th>followers</th>
+        <th> <%= link_to user.followers.count, user_followers_path(user) %></th>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    <%= link_to new_post_path do %>
+            <div><%= image_tag 'memo.gif', class: "mb-3" %><strong>NEW</strong></div>
+    <% end %>
+  </p>
+</div>
