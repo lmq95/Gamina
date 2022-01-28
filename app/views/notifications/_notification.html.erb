@@ -4,7 +4,11 @@
 <div class="col-md-6.mx-auto">
   <div class="form-inline">
     <div>
-      <strong><%= visitor.name %></strong><%= 'さんが' %>
+      <%= link_to user_path(visitor) do %>
+      <%= attachment_image_tag visitor, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle" %>
+      <strong><%= visitor.name %></strong>
+      <% end %>
+      <%= 'さんが' %>
 
       <% case notification.action %>
         <% when 'follow' then %>
@@ -20,7 +24,7 @@
           <% else %>
             <span>
               <strong>
-                <%= notification.post.user.name + 'さんの投稿' %>
+                <%= link_to notification.post.user.name + 'さんの投稿', post_path(visitor) %>
               </strong>
             </span>
           <% end %>
