@@ -11,7 +11,17 @@
           </div>
           <div class="form-group">
             <%= f.label :ジャンル %>
-            <%= f.text_field :genre, autofocus: true, class: "form-control genre" %>
+            <%= f.select :genre, [
+              'シューティング',
+              'アクション',
+              'ロールプレイング',
+              'アドベンチャー',
+              'レース',
+              'パズル',
+              'シミュレーション',
+              'サンドボックス',
+              '音楽',
+              'テーブル'], {include_blank: '---'} %>
           </div>
           <div class="form-group" id="star">
             <%= f.label :rate, "評価：" %>
