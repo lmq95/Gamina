@@ -18,11 +18,14 @@
             <th>タイトル</th>
             <td><%= @post.title %></td>
             <td id="favorite_<%= @post.id %>"><%= render 'favorites/favorite', post: @post %></td>
-            </tr>
+          </tr>
+          <% if @post.genre.present? %>
           <tr>
             <th>ジャンル</th>
             <td><%= @post.genre %></td>
           </tr>
+          <% end %>
+          <% if @post.rate.present? %>
           <tr>
             <th>レビュー</th>
             <td>
@@ -40,6 +43,7 @@
                 </script>
             </td>
           </tr>
+          <% end %>
           <th>本文</th>
           <td><%= @post.body %></td>
         </tbody>
