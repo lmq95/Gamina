@@ -31,13 +31,13 @@
               <div class="text-right my-2">
                 <strong><%= m.body %></strong>
                 <%= attachment_image_tag m.user, :profile_image, :fill, 25, 25, fallback: "no-image-icon.png", class: "rounded-circle" %> <br>
-                <%= m.created_at.strftime("%Y-%m-%d %H:%M")%><br>
+                <p class="date"><%= m.created_at.strftime("%Y/%m/%d %H:%M")%></p><br>
               </div>
             <% else %>
               <div class="text-left my-2">
                 <%= attachment_image_tag m.user, :profile_image, :fill, 25, 25, fallback: "no-image-icon.png", class: "rounded-circle" %>
                 <strong><%= m.body %></strong> <br>
-                <%= m.created_at.strftime("%Y-%m-%d %H:%M")%><br>
+                <p class="date"><%= m.created_at.strftime("%Y/%m/%d %H:%M")%></p><br>
               </div>
               <% end %>
           <% end %>
