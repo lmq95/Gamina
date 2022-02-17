@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   before_action :ensure_current_user, {only: [:edit]}
 
   def index
-    @posts = Post.where(user_id: [current_user.id, *current_user.following_ids]).includes([:user]).page(params[:page]).per(1)
+    @posts = Post.where(user_id: [current_user.id, *current_user.following_ids]).includes([:user]).page(params[:page]).per(8)
   end
 
   def new
