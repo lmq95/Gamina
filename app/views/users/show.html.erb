@@ -5,7 +5,7 @@
     </div>
 
     <div class="col-md-8 col-lg-8 offset-md-1 pt-3">
-      <h3><%= @user.name %>'s My page</h3>
+      <h3 class="d-inline-block"><%= @user.name %>'s My page</h3>
         <% unless @user.id == current_user.id %>
           <% if current_user.following?(@user) && @user.following?(current_user) %>
           <% if @is_room == true %>
