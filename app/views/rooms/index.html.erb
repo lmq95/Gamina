@@ -7,6 +7,7 @@
         <table class="table table-hover table-inverse">
           <thead>
             <tr>
+              <th></th>
               <th>名前</th>
               <th>メッセージ</th>
             </tr>
@@ -14,6 +15,10 @@
           <tbody>
             <% @another_entries.each do |entry| %>
             <tr>
+              <td>
+                <%= link_to room_path(entry.room) do %>
+                  <%= attachment_image_tag entry.user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle" %>
+                <% end %></td>
               <td><%= link_to entry.user.name, room_path(entry.room) %></td>
               <td>
                  <%= Message.find_by(id: entry.room.message_ids.last)&.body %>
