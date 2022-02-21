@@ -27,7 +27,7 @@
   </table>
   <p>
     <%= link_to new_post_path do %>
-            <div><%= image_tag 'memo.gif', class: "mb-3" %><strong>NEW</strong></div>
+            <div><%= image_tag 'memo.gif', class: "mb-3" %>&nbsp;<h4 class="d-inline-block">NEW</h4></div>
     <% end %>
     <% if user.id == current_user.id %>
       <%= link_to edit_user_path(user) do %>
