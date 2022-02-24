@@ -23,21 +23,28 @@
         <th>followers</th>
         <th> <%= link_to user.followers.count, user_followers_path(user) %></th>
       </tr>
+      <tr>
+        <% if user.id == current_user.id %>
+          <th>setting</th>
+          <th>
+            <%= link_to edit_user_path(user) do %>
+              <i class="btn btn-outline-secondary rounded-pill fas fa-user-cog"></i>
+            <% end %>
+          </th>
+        <% else %>
+          <% if current_user.following?(user) %>
+            <th>Remove?</th>
+            <th><%= link_to "", user_relationships_path(user.id), method: :delete, class: "fas fa-user-minus btn btn-primary rounded-pill" %></th>
+          <% else %>
+            <th>Follow?</th>
+            <th><%= link_to "", user_relationships_path(user.id), method: :post, class: "fas fa-user-plus btn btn-success rounded-pill" %></th>
+          <% end %>
+        <% end %>
+      </tr>
     </tbody>
   </table>
   <p>
     <%= link_to new_post_path do %>
             <div><%= image_tag 'memo.gif', class: "mb-3" %><%= image_tag 'new2.gif', class: "mb-3" %></div>
-    <% end %>
-    <% if user.id == current_user.id %>
-      <%= link_to edit_user_path(user) do %>
-        <i class="btn btn-outline-secondary fas fa-user-cog ml-2 mt-4"></i>
-      <% end %>
-    <% else %>
-      <% if current_user.following?(user) %>
-        <%= link_to "", user_relationships_path(user.id), method: :delete, class: "fas fa-user-minus btn btn-primary btn-sm ml-2 mt-4" %>
-      <% else %>
-        <%= link_to "", user_relationships_path(user.id), method: :post, class: "fas fa-user-plus btn btn-success btn-sm ml-2 mt-4" %>
-      <% end %>
     <% end %>
   </p>
