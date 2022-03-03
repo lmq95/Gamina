@@ -6,7 +6,7 @@
     <hr>
     <% if @notifications.exists? %>
       <div class="users-index">
-        <%= render @notifications.includes([:post]) %>
+        <%= render @notifications %>
       </div>
     <% else %>
       <p>通知はありません</p>
