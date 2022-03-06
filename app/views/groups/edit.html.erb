@@ -6,7 +6,7 @@
         <%= form_with model:@group, local:true do |f| %>
         <div class="form-group">
           <%= f.label :グループ名 %>
-          <%= f.text_field :name, autofocus: true, class: "form-control group_name" %>
+          <%= f.text_field :name, autofocus: true, class: "form-control group_name rounded-pill" %>
         </div>
         <div class="form-group">
           <%= f.label :グループ画像 %>
@@ -14,7 +14,7 @@
         </div>
         <div class="form-group">
           <%= f.label :グループ紹介%>
-          <%= f.text_area :introduction, autofocus: true, class: "form-control group_introduction" %>
+          <%= f.text_area :introduction, autofocus: true, class: "form-control group_introduction rounded-pill" %>
         </div>
         <div class="form-group">
           <input type="submit" value="&#xf303; update" class="fas btn btn-sm btn-success rounded-pill">

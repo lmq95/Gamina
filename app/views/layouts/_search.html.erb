@@ -1,7 +1,7 @@
 <div class="search_form float-right">
    <%= form_with url: search_path, local: true, method: :get do |f| %>
     <div class="input-group">
-     <%= f.text_field :word, class: "col-8 form-control form-control-sm", placeholder: "記事検索"%>
+     <%= f.text_field :word, class: "col-8 form-control form-control-sm rounded-pill", placeholder: "記事検索"%>
       <div class="input-group-append">
          <%= button_tag type: :submit, class: "search" do %>
          <%= image_tag 'mushi1.gif' %>
