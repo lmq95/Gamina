@@ -53,7 +53,8 @@
      <br>
       <div class="pb-3"><%= image_tag 'head/comme.gif' %><%= image_tag 'head/nts.gif' %></div>
       <div id="comment">
-        <%= render 'post_comments/comment', post: @post %>
+        <%= render 'post_comments/comment', post: @post %><br>
+        
       </div>
       <%= form_with(model:[@post, @post_comment]) do |f| %>
         <%= f.text_area :comment, size:"30x3" %><br>

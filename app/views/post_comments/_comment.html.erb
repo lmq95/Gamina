@@ -1,14 +1,14 @@
 <table>
   <% post.post_comments.includes([:user]).each do |post_comment| %>
     <% post_comment_user = post_comment.user %>
-    <tr>
+    <tr class="comment">
       <td>
         <%= link_to user_path(post_comment_user) do %>
           <%= attachment_image_tag post_comment_user, :profile_image, :fill, 40, 40, fallback: "no-image-icon.png", class: "rounded-circle" %>
         <% end %><br>
         <p class="name"><%= post_comment_user.name %></p>
       </td>
-      <td class="comment">
+      <td class="body">
         <small>&emsp;<%= post_comment.created_at.strftime("%Y/%m/%d %H:%M")%></small><br>
         &emsp;<%= post_comment.comment %>
       </td>
@@ -20,4 +20,3 @@
     </tr>
   <% end %>
 </table>
-<br>
